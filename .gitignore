@@ -216,3 +216,8 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+placement_data.db
+uploads/*
+templates/uploads/*
+!uploads/.gitkeep
+!templates/uploads/.gitkeep
