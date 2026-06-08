@@ -1,0 +1,86 @@
+ 
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Placement Analytics</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+
+    <h1>AI-Powered Placement Preparation & Career Analytics System</h1>
+    <p class="subtitle">Student Career Readiness Dashboard</p>
+
+    <div class="dashboard">
+
+        <div class="card">
+            <h2>Student Profile</h2>
+
+           <form method="POST" enctype="multipart/form-data">
+           <input type="text" name="name" placeholder="Enter Student Name" required>
+
+           <input type="text" name="branch" placeholder="Enter Branch" required>
+
+           <input type="text" name="skills" placeholder="Enter Skills" required>
+           <input type="text" name="company" placeholder="Enter Target Company">
+
+
+           <input type="file" name="resume">
+ 
+           <button type="submit">Analyze Profile</button>
+    </form>
+        </div>
+
+        {% if score is not none %}
+        <div class="card score-card">
+            <h2>Placement Readiness Score</h2>
+            <h3 class="score">{{ score }}%</h3>
+            <p>Hello {{ name }}, this is your current readiness level.</p>
+        </div>
+        <div class="card">
+    <h2>Resume Strength</h2>
+    <h3>{{ strength_level }}</h3>
+</div>
+
+     <div class="card">
+    <h2>Company Match Score</h2>
+    <h3 class="score">{{ score }}%</h3>
+
+    <h2>Missing Skills</h2>
+
+    <ul>
+        {% for skill in missing_skills %}
+            <li>{{ skill }}</li>
+        {% endfor %}
+    </ul>
+</div>
+
+<div class="card">
+    <h2>Recommended Companies</h2>
+
+    <ul>
+        {% for company, score in recommended_companies %}
+            <li>{{ company }} - {{ score }}%</li>
+        {% endfor %}
+    </ul>
+</div>
+
+<div class="card">
+    <h2>Detected Skills</h2>
+
+    <ul>
+        {% for skill in detected_skills %}
+            <li>{{ skill }}</li>
+        {% endfor %}
+    </ul>
+</div>
+
+{% endif %}
+
+</div>
+
+</div>
+
+</body>
+</html>

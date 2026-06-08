@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+    <h1>Admin Dashboard</h1>
+    <p class="subtitle">Saved Student Analysis Records</p>
+    <div class="dashboard">
+
+    <div class="card">
+        <h2>Total Students</h2>
+        <h3>{{ total_students }}</h3>
+    </div>
+
+    <div class="card">
+        <h2>Average Score</h2>
+        <h3>{{ average_score }}%</h3>
+    </div>
+
+    <div class="card">
+        <h2>Highest Score</h2>
+        <h3>{{ highest_score }}%</h3>
+    </div>
+
+</div>
+
+    <table border="1" cellpadding="10">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Branch</th>
+            <th>Skills</th>
+            <th>Score</th>
+            <th>Company</th>
+            <th>Match Score</th>
+            <th>Date</th>
+        </tr>
+
+        {% for record in records %}
+        <tr>
+            <td>{{ record[0] }}</td>
+            <td>{{ record[1] }}</td>
+            <td>{{ record[2] }}</td>
+            <td>{{ record[3] }}</td>
+            <td>{{ record[4] }}%</td>
+            <td>{{ record[5] }}</td>
+            <td>{{ record[6] }}%</td>
+            <td>{{ record[7] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+</body>
+</html>
